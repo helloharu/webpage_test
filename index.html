@@ -13,17 +13,35 @@
       width: 300px;
       height: auto;
     }
+
+   .image-container {
+      display: grid;
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    .image-container img {
+      grid-area: 1 / 1; /* 全ての画像を同じグリッド領域に配置 */
+      width: 100%;
+      height: auto;
+    }
+    
   </style>
 </head>
 
 <body>
   <h1>中央揃えのタイトル</h1>
 
-  <button onclick="showImage()">これでいけるはず</button>
-  <img id="myImage" src="https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png" alt="画像のリンク切れ。ごめんね">
+  <button onclick="showImage(https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png)">これでいけるはず</button>
+  <button onclick="showImage(https://raw.githubusercontent.com/helloharu/webpage_test/main/material/skin_ribbon_lightblue.png)">これでいけるはず</button>
+  
+  <img id="myImage" src="" alt="画像のリンク切れ。ごめんね">
+  
   <script>
-    function showImage() {
+    function showImage(skin) {
       var img = document.getElementById("myImage");
+      img.src = skin
       img.style.display = "block"; // 画像を表示する
     }
   </script>
