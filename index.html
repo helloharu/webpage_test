@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<html>
 <head>
   <meta charset="UTF-8">
   <title>テストウェブサイト</title>
@@ -6,11 +8,28 @@
     h1 {
       text-align: center;
     }
+    #myImage {
+      display: none; /* 最初は非表示にする */
+      width: 300px;
+      height: auto;
+    }
   </style>
 </head>
 
-<html>
+<body>
   <h1>中央揃えのタイトル</h1>
   <p>ここに内容を書きます。</p>
+  <br><br>
+  <p>
+    <button onclick="showImage()">画像を表示する</button>
+    <img id="myImage" src="http://www.youtube.com/channel/UC6KryiKlLOQWdhDHi0yro-g" alt="表示する画像">
+    <script>
+      function showImage() {
+      var img = document.getElementById("myImage");
+      img.style.display = "block"; // 画像を表示する
+    </script>
+  </p>
+  
+</body>
 </html>
 
