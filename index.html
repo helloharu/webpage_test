@@ -21,11 +21,11 @@
       height: 200px;
     }
 
-    .image-container img {
+/*     .image-container img {
       grid-area: 1 / 1; /* 全ての画像を同じグリッド領域に配置 */
       width: 100%;
       height: auto;
-    }
+    } */
     
   </style>
 </head>
@@ -33,15 +33,44 @@
 <body>
   <h1>中央揃えのタイトル</h1>
 
-  <button onclick="showImage('flybat_edged_0.png')">これでいけるはず?</button>
-  <br><br>  <br><br>  <br><br>  <br><br>  <br><br>
-  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず?</button>
+<!--   <button onclick="showImage('flybat_edged_0.png')">これでいけるはず?</button>
+  <br><br>  <br><br>  <br><br>  <br><br>  <br><br> -->
+  
+  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず</button>
   
   <img id="myImage" src="" alt="画像のリンク切れ。ごめんね">
+
+  <canvas id="myCanvas"></canvas>
   
   <script>
     function showImage(skin) {
-      var img = document.getElementById("myImage");
+      var canvas = document.getElementById("myCanvas");
+      var ctx =  canvas.getContext("2d");
+
+      var img_bat = new Image();
+      img_bat.crossOrigin = "anonymous";
+
+      var img_skin1 = new Image();
+      img_skin1.crossOrigin = "anonymous";
+
+      img_bat.onload = function(){
+        img_skin1.onload =function(){
+          canvas.width = img_bat.width;
+          canvas.height = img_bat.height;
+
+          ctx.drawImage(img_bat, 0, 0);
+          ctx.drawImage(skin, 0, 0, img_bat.width, img_bat.height);
+
+          var outputImage = document.getElementById("outputImage");
+          outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
+          outputImage.style.display = "block"; // 画像を表示する
+ 
+          
+        };
+        img_skin1.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
+      };
+      img_bat.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png'
+      
       img.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
       img.style.display = "block"; // 画像を表示する
 
