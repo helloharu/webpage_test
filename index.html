@@ -59,7 +59,7 @@
           canvas.height = img_bat.height;
 
           ctx.drawImage(img_bat, 0, 0);
-          ctx.drawImage(skin, 0, 0, img_bat.width, img_bat.height);
+          ctx.drawImage(img_skin1, 0, 0, img_bat.width, img_bat.height);
 
           var outputImage = document.getElementById("outputImage");
           outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
