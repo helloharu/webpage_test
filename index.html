@@ -23,38 +23,56 @@
 <body>
   <h1>中央揃えのタイトル</h1>
   
-  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず!?!?</button>
+  <button onclick="showImage(['skin_ribbon_lightblue.png'])">着替え</button>
   
   <canvas id="myCanvas" style="display:none;"></canvas>
   <img id="outputImage" src="" alt="画像のリンク切れ。ごめんね">
   
   <script>
-    function showImage(skin) {
+    function showImage(skins) {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
       var img_bat = new Image();
       img_bat.crossOrigin = "anonymous";
 
-      var img_skin1 = new Image();
-      img_skin1.crossOrigin = "anonymous";
-
       img_bat.onload = function(){
+        // キャンバスのサイズをバット画像に合わせる
         canvas.width = img_bat.width;
         canvas.height = img_bat.height;
 
-        img_skin1.onload = function() {
-          ctx.drawImage(img_bat, 0, 0);
-          ctx.drawImage(img_skin1, 610, 170);
+        // バット画像をキャンバスに描画
+        ctx.drawImage(img_bat, 0, 0);
 
-          var outputImage = document.getElementById("outputImage");
-          outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
-          outputImage.style.display = "block"; // 画像を表示する
+        // スキン画像を順番に読み込んで描画
+        var loadSkins = function(index) {
+          if (index >= skins.length) {
+            // すべてのスキン画像が描画されたら出力する
+            var outputImage = document.getElementById("outputImage");
+            outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
+            outputImage.style.display = "block"; // 画像を表示する
+            return;
+          }
+
+          // 次のスキン画像を読み込んで描画する
+          var img_skin = new Image();
+          img_skin.crossOrigin = "anonymous";
+          img_skin.onload = function() {
+            // スキン画像を指定した位置に描画
+            ctx.drawImage(img_skin, 610, 170);
+            // 次のスキン画像を処理
+            loadSkins(index + 1);
+          };
+
+          // スキン画像のソースを設定
+          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index];
         };
 
-        img_skin1.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
+        // 最初のスキン画像の読み込みを開始
+        loadSkins(0);
       };
 
+      // バット画像のソースを設定
       img_bat.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png';
     }
   </script>
