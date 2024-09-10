@@ -23,48 +23,38 @@
 <body>
   <h1>中央揃えのタイトル</h1>
   
-  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず!?</button>
+  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず!?!?</button>
   
   <canvas id="myCanvas" style="display:none;"></canvas>
   <img id="outputImage" src="" alt="画像のリンク切れ。ごめんね">
   
   <script>
-    function showImages(skins) {
+    function showImage(skin) {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
       var img_bat = new Image();
       img_bat.crossOrigin = "anonymous";
 
-      // スキン画像を順番にロードして描画する
-      var skinImages = ['skin_ribbon_lightblue.png'];
-      var loadedCount = 0;
+      var img_skin1 = new Image();
+      img_skin1.crossOrigin = "anonymous";
 
-      img_bat.onload = function() {
+      img_bat.onload = function(){
         canvas.width = img_bat.width;
         canvas.height = img_bat.height;
 
-        // スキン画像を読み込み、描画する
-        skins.forEach(function(skin, index) {
-          var img_skin = new Image();
-          img_skin.crossOrigin = "anonymous";
-          
-          img_skin.onload = function() {
-            // 各スキン画像を描画
-            ctx.drawImage(img_bat, 0, 0);
-            ctx.drawImage(img_skin, 610, 170); // 位置は調整が必要
-            
-            loadedCount++;
-            if (loadedCount === skins.length) {
-              // 全てのスキン画像が描画された後に出力画像を更新
-              var outputImage = document.getElementById("outputImage");
-              outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
-              outputImage.style.display = "block"; // 画像を表示する
-            }
-          };
-          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
-        });
+        img_skin1.onload = function() {
+          ctx.drawImage(img_bat, 0, 0);
+          ctx.drawImage(img_skin1, 610, 170);
+
+          var outputImage = document.getElementById("outputImage");
+          outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
+          outputImage.style.display = "block"; // 画像を表示する
+        };
+
+        img_skin1.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
       };
+
       img_bat.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png';
     }
   </script>
