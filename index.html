@@ -33,17 +33,19 @@
 <body>
   <h1>中央揃えのタイトル</h1>
 
-  <button onclick="showImage('https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png')">これでいけるはず</button>
-  <br><br>
-  <button onclick="showImage('https://raw.githubusercontent.com/helloharu/webpage_test/main/material/skin_ribbon_lightblue.png')">これでいけるはず</button>
+  <button onclick="showImage('flybat_edged_0.png')">これでいけるはず?</button>
+  <br><br>  <br><br>  <br><br>  <br><br>  <br><br>
+  <button onclick="showImage('skin_ribbon_lightblue.png')">これでいけるはず?</button>
   
   <img id="myImage" src="" alt="画像のリンク切れ。ごめんね">
   
   <script>
     function showImage(skin) {
       var img = document.getElementById("myImage");
-      img.src = skin;
+      img.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skin;
       img.style.display = "block"; // 画像を表示する
+
+      // var canvas = document.getElementById("myCanvas");
     }
   </script>
 
