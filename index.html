@@ -31,24 +31,30 @@
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   
   <script>
-    function loadYaml(filename){
-      fetch(filename)
-        .then(response => response.text())
-        .then(yamlText => {
-          // YAMLテキストをJavaScriptオブジェクトにパース
-          return jsyaml.load(yamlText);
-        })
-        .catch(error => console.error('YAMLの読み込みに失敗しました:', error));
+    async function loadYaml(filename){
+      try {
+        const response = await fetch(filename);
+        const yamlText = await response.text();
+        // YAMLテキストをJavaScriptオブジェクトにパースして返す
+        return jsyaml.load(yamlText);
+      } catch (error) {
+        console.error('YAMLの読み込みに失敗しました:', error);
+      }
     }
-  </script>
-
-  <script>
-    function showImage() {
+    
+    async function showImage() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
       enabledskins = ['みずいろのりぼん', 'てんしのわ'];
-      skindata = loadYaml('profile.yaml').DATA_SKIN;
+      
+      const yamlData = await loadYaml('profile.yaml');
+      if (!yamlData) {
+        console.error("YAMLデータの取得に失敗しました");
+        return;
+      }
+      const skindata = loadYaml('profile.yaml').DATA_SKIN;
+      
       // skins = [{filename:'skin_ribbon_lightblue.png', x:610, y:170},  {filename:'skin_angelring_white.png', x:500, y:100}];
 
       
