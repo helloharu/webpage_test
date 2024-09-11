@@ -1,0 +1,421 @@
+# ========== ユーザ向けの設定 ==========
+
+
+# --- 一般 ---
+FPS: 30 # 画面の更新頻度。高いとヌルヌル動く。変えるとアニメーションが早くなったりするかも。
+ID_STREAM: k9DQSpr_WMo   # コメントを取得する配信のID。配信は待機状態でも良い。
+
+WHO_AM_I: ロイド
+
+IDS_STREAM:
+  マリベル: mCiTCCJVcYQ
+  ノエル:
+  ルイ:
+  ネムリム:
+  ニコラス:
+  ロイド: k9DQSpr_WMo
+  リチャード:
+  ハレルヤ:
+  ロゼリア:
+
+
+FONTSIZE:
+  4S: 15
+  3S: 20
+  2S: 25
+  1S: 30
+  0M: 35
+  1L: 40
+  2L: 45
+  3L: 50
+  4L: 55
+  5L: 60
+  6L: 70
+  7L: 85
+  8L: 100
+
+STROKEWIDTH_OUTER:
+  4S: 1
+  3S: 2
+  2S: 3
+  1S: 4
+  0M: 4
+  1L: 4
+  2L: 5
+  3L: 6
+  4L: 7
+
+KEYWORDS_SCARLET:
+  マリベル: [マリ(ベル|イ|ィ|ー)?, まり(い|ぃ|ー)?, Mariebelle]
+  ノエル: [ノエ(ル|兄)?, のえ(る|兄)?, Nowell]
+  ルイ: [(ルイ|るい)兄?, Rewy]
+  ネムリム: [ネム(リム)?, ねむ(りむ)?, Nem(rim)?]
+  ニコラス: [ニコ(ラス)?, にこ(らす)?, Nico(lus)?]
+  ロイド: [ロイ, ろい, Loyd?]
+  リチャード: [リチャード, チャド, ちゃど, Ritcherd, Chad]
+  ハレルヤ: [ハレ(ルヤ|兄), はれ(るや|兄), Hallelujah]
+  ロゼリア: [ロゼリア, (リア|りあ)姉, ろぜりあ, Rose(liah)?]
+
+
+
+
+# 各素材のフォルダのパス。実行ファイルからの相対パス。
+PATH_IMAGE: material/image
+PATH_IMAGE_NONFREE: material_nonfree/image
+PATH_SOUND: material/sound
+PATH_VIDEO: material/video
+PATH_FONT: material/font
+
+
+# # 兄弟のテーマカラー　注：色の順番は[B,G,R]
+# #            マリベル              ノエル              ルイ                ネムリム             ニコラス           ロイド              リチャード          ハレルヤ            ロゼリア
+# SCOLOR_DEFF: [[0xA9, 0x4D, 0x5A], [0xF6, 0xE7, 0xD4], [0x26, 0x31, 0x45], [0x00, 0x96, 0xFF], [0xFF, 0xDF, 0x28], [0xAB, 0x3D, 0xEA], [0xA6, 0x90, 0x82], [0xEB, 0x6D, 0x21], [0xA5, 0x3A, 0x64]]
+# SCOLOR_DARK: [[0xFF, 0x00, 0x00], [0xaa, 0xaa, 0xaa], [0x00, 0x00, 0x44], [0x00, 0x00, 0xFF], [0xFF, 0xFF, 0x22], [0x7C, 0x00, 0x97], [0x89, 0x39, 0x39], [0xFF, 0x66, 0x00], [0x9D, 0x13, 0x56]]
+# SCOLOR_PALE: [[0xFF, 0xAA, 0xAA], [0xF8, 0xF8, 0xF8], [0xDD, 0xDD, 0xDD], [0xE0, 0xE0, 0xFF], [0xEE, 0xFF, 0xAA], [0xFF, 0xE0, 0xFF], [0xDD, 0xAD, 0xAD], [0xFF, 0xBD, 0x91], [0xD8, 0x94, 0xAE]]
+
+COLORS_SCARLET_DEFF:
+  マリベル: [0xA9, 0x4D, 0x5A]
+  ノエル: [0xF6, 0xE7, 0xD4]
+  ルイ: [0x26, 0x31, 0x45]
+  ネムリム: [0x00, 0x96, 0xFF]
+  ニコラス: [0xFF, 0xDF, 0x28]
+  ロイド: [0xAB, 0x3D, 0xEA]
+  リチャード: [0xA6, 0x90, 0x82]
+  ハレルヤ: [0xEB, 0x6D, 0x21]
+  ロゼリア: [0xA5, 0x3A, 0x64]
+
+COLORS_SCARLET_DARK:
+  マリベル: [0xFF, 0x00, 0x00]
+  ノエル: [0xaa, 0xAA, 0xAA]
+  ルイ: [0x00, 0x00, 0x44]
+  ネムリム: [0x00, 0x00, 0xFF]
+  ニコラス: [0xFF, 0xFF, 0x22]
+  ロイド: [0x7C, 0x00, 0x97]
+  リチャード: [0x89, 0x39, 0x39]
+  ハレルヤ: [0xFF, 0x66, 0x00]
+  ロゼリア: [0x9D, 0x13, 0x56]
+
+COLORS_SCARLET_PALE:
+  マリベル: [0xFF, 0xAA, 0xAA]
+  ノエル: [0xF8, 0xF8, 0xF8]
+  ルイ: [0xDD, 0xDD, 0xDD]
+  ネムリム: [0xE0, 0xE0, 0xFF]
+  ニコラス: [0xEE, 0xFF, 0xAA]
+  ロイド: [0xFF, 0xE0, 0xFF]
+  リチャード: [0xDD, 0xAD, 0xAD]
+  ハレルヤ: [0xFF, 0xBD, 0x91]
+  ロゼリア: [0xD8, 0x94, 0xAE]
+
+
+
+
+# --- Vote ---
+GRAGHSCALE_VOTE: 10  # グラフのスケールの初期値。この値が大きいと1目盛りが小さくなる。投票数がこの値を超えるとグラフがウィンドウに収まるようにスケールが変更される。
+LINEWIDTH_RECTANGLE: 40 # グラフの外枠の太さ
+
+KEYWORDS_CANDIDATE:
+- きのこ
+- たけのこ
+- チョコの木
+
+
+
+
+
+# --- Summon ---
+
+KEYWORDS_CALL_POLICE: ['110', おまわりさん, 通報, (P|p)olice, パトカー]
+KEYWORDS_CALL_AMBULANCE: ['119', 救急車, 怪我人, お医者(様|さま)]
+
+ANGLE_SHAKING_VEHICLE: 8       # 走行中の車の揺れ具合。単位:度
+
+DURATIOM_STAMP: 15
+N_MAX_STAMP: 20                # 画面に表示可能なスタンプの最大数
+
+SPEED_VEHICLE_DEFF: 0.1        # 車の速さ (範囲:0≤X≤1, 1=ウィンドウの横幅)
+
+# チャットこうもり
+H_FLYBAT: 0.2 # チャットこうもりの縦の大きさ。ウィンドウサイズを1として相対値で指定。
+FILE_FLYBAT_0: flybat_edged_0.png
+FILE_FLYBAT_1: flybat_edged_1.png
+FILE_FALLBAT_0: fallbat_0.png
+
+EN_BATLEVEL: true
+
+
+LOC_START_CHATBAT: [1.0, 0.9]
+
+SPEED_FLYBAT: 0.1              # コウモリの水平方向の速さ。1秒でウインドウ内を進む割合(範囲:0≤X≤1,  1=ウィンドウの横幅)
+FREQUENCY_FLYBAT_FLAP: 4       # コウモリの羽ばたきの周波数(1秒間に何回羽ばたくか)
+FREQUENCY_FLYBAT_SIN: 0.8      # コウモリの上下動の周波数
+AMPLITUDE_FLYBAT_BASE: 0.05    # コウモリの上下動の幅。(範囲1:0≤X≤1:ウィンドウの縦幅)
+AMPLITUDE_FLYBAT_RANDOM: 0.02  # コウモリのランダムな小さい縦の動きの大きさ。(範囲1:0≤X≤1:ウィンドウの縦幅)
+
+SPEED_FALLBAT: 0.4              # コウモリが落ちるときの速さ。
+FREQUENCY_FALLBAT_SIN: 3      # コウモリの左右道動の周波数
+AMPLITUDE_FALLBAT: 0.02         # コウモリの左右動の幅。(範囲1:0≤X≤1:ウィンドウの縦幅)
+
+LENGTH_MESSAGE_CHATBAT: 15 # チャットこうもりが表示するコメントの1行の文字数。
+N_LINE_CHATBAT: 3 # チャットこうもりが表示するコメントの行数
+FONTSIZE_MESSAGE_CHATBAT: 2S
+FONTSIZE_AUTHORNAME_CHATBAT: 3S
+FONTSIZE_LEVEL_CHATBAT: 4S
+
+LOC_MESSAGE_CHATBAT: [0.4, 0.3]
+LOC_AUTHORNAME_CHATBAT: [0.333, 0.75] # コメント主の名前の位置
+LOC_LEVEL_CHATBAT: [0.333, 0.85]
+
+BADWORDS_CHATBAT: [ばか, あほ, へた]
+X_GOAL_BADBAT: 0.1
+
+R_COLLISION_CHATBAT: 0.1
+
+
+# こうもりスキン
+# LOC_SKIN_FLYBAT:
+#   しろいめがね: [500, 235]
+#   りばーしのおうかん: [485, 55]
+#   はーとのねっくれす: [490, 280]
+#
+# FILES_SKIN_BAT:
+#   しろいめがね: skin_glasses_white.png
+#   りばーしのおうかん: skin_crown_reversi.png
+#   はーとのねっくれす: skin_necklace_heart.png
+
+# スタンプ
+KEYWORDS_CALL_STAMP:
+  umai: [(うま|ウマ|上手)い(!|！)?, ウマイ(!|！)?]
+  erai: [(えら|エラ|偉)い(!|！)?, エライ(!|！)?]
+  sasuga: [(さすが|流石)(!|！)?]
+  sugoi: [(すご|スゴ|凄)い(!|！)?, スゴイ(!|！)?]
+
+  oshii: [(お|惜)しい(!|！)?, オシイ(!|！)?]
+  naisutorai: [(ないす|ナイス)(とらい|トライ)(!|！)?, (N|n)ice ?try!?]
+  mouchoi: [もうちょい(!|！)?]
+
+  zannen: [(ざんねん|ザンネン|残念)(!|！)?]
+  donmai: [(どんまい|ドンマイ)(!|！)?]
+
+  zako: [ざこ, ザコ, 雑魚]
+  heta: [へた, ヘタ, 下手]
+  munou: [むのう, ムノウ, 無能]
+
+
+SPEED_BOM_DEFF: 0.5 # バクダンの垂直下方向の速さ。1秒でウインドウ内を進む割合(範囲:0≤X≤1,  1=ウィンドウの縦幅)
+FREQUENCY_BOM_BLINK: 15 # バクダンの点滅の周波数(1秒間に何回点滅するか)
+DURATIOM_BOM: 15
+
+MATERIALS_WEAPON:
+  bom: [bom_0_l.png, bom_0_r.png, bom_3.png, bom_2.png, bom_1_red.png, bom_1.png, explosion_0.png, explosion_1.png, explosion_2.png, explosion_3.png, smoke_0.png, smoke_1.png]
+
+KEYWORDS_CALL_WEAPON:
+  bom: [ボム, (B|b)om, ばくだん, バクダン, 爆弾]
+
+# --- Quiz ---
+KEYWORDS_CALL_QUIZ: [クイズ, (Q|q)uiz]
+QUIZZES: [['問題: APEXの中で僕が一番好きな武器は?', [(30(-| |　)?30( |　)?)?リピーター]], ['問題: たけのこときのこ、おいしいのは?', [たけのこ(の里)?]], ['問題: たけのこときのこ、優れているのは?', [たけのこ(の里)?]]]
+
+# --- PutKey ----
+KEYWORDS_PUT_JUMP: [ジャンプ(!|　)?, (J|j)ump!?]
+
+KEYWORDS_CALL_PUTKEY:
+  ジャンプ: [ジャンプ(!|！)?, (J|j)ump!?]
+  つかみ: [(掴|つか)(み|む), (H|h)old]
+  ダイブ: [ダイブ, (D|d)ive]
+  まえ: [まえ, 前, ↑]
+  うしろ: [うしろ, 後ろ?, ↓]
+  ひだり: [ひだり, 左, ←]
+  みぎ: [みぎ, 右, →]
+
+KEYMAPS_GAME:
+  ジャンプ: ' '
+  つかみ: h
+  ダイブ: v
+  まえ: w
+  うしろ: s
+  ひだり: a
+  みぎ: d
+
+KEYWORDS_CALL_PUTMOUSE:
+  グルグル: [ぐるぐる, グルグル]
+  ガクガク: [がくがく, ガクガク]
+  ブルブル: [ぶるぶる, ブルブル]
+
+WIDTH_VIEW_MOVE: 400
+HEIGHT_VIEW_MOVE: 400
+DELAY_VIEWMOVE: 1 # 警告が表示されてからキー入力や視野撹乱が発生するまでの猶予時間(単位: 秒)
+DURATIOM_VIEWMOVE: 0.07
+
+FREQUENCY_PUTMOUSE: 4 # グルグル/ガクガク/ブルブルのマウスの動く周波数(1秒に何周/往復するか)
+AMPLITUDE_PUTMOUSE: 400 # グルグル/ガクガク/ブルブルのマウスの振れ幅の大きさ。
+
+# --- ActiveChat ---
+SIZE_WIN_ACTIVECHAT_DEFF: [320, 1080]
+
+FONT_ACTIVECHAT_ACTIONTYPE: /free/LanobePOPv2/LightNovelPOPv2.otf
+FONTSIZE_ACTIVECHAT_ACTIONTYPE: 32
+
+FONT_ACTIVECHAT_ACTION: /free/nicomoji-plus_v2/nicomoji-plus_v2.ttf
+FONTSIZE_ACTIVECHAT_ACTION: 34
+
+ACTIONS_ACTIVECHAT:
+  移動制御:
+    まえ: [まえ, 前, ↑]
+    うしろ: [うしろ, 後ろ?, ↓]
+    みぎ: [みぎ, 右, →]
+    ひだり: [ひだり, 左, ←]
+
+  強制入力:
+    ジャンプ: [ジャンプ(!|！)?, (J|j)ump!?]
+    つかみ: [(掴|つか)(み|む), (H|h)old]
+    ダイブ: [ダイブ, (D|d)ive]
+
+  視野撹乱:
+    グルグル: [グルグル, ぐるぐる]
+    ガクガク: [ガクガク, がくがく]
+    ブルブル: [ブルブル, ぶるぶる]
+
+  画面攻撃:
+    ミサイル: [ミサイル, (M|m)issile]
+    インク: [インク, (I|i)nk]
+    ボム: [ボム, (B|b)om, ばくだん, バクダン, 爆弾]
+
+
+FREQUENCY_BLINK_SELECTEDTEXT: 4
+
+LOC_ACTIONTYPE_TOP: [0.5, 0.03]
+LOC_SELECTION_TRIANGLE: [0.1, 0.5]
+
+SIZE_TEXTBOX_ACTIONTYPE: [130, 40]
+SIZE_TEXTBOX_ACTION: [160, 32]
+
+WIDTH_TEXTWINDOW_ACTIVECHAT: 0.55
+
+D_ACTIONTYPE_ACTION: [0, 0.035]
+D_ACTION_ACTION: [0, 0.028]
+D_ACTION_ACTIONTYPE: [0, 0.03]
+
+COLOR_WARNING: [210, 50, 31]
+OFFSET_WARNIG_SHADOW: [0.004, 0.04]
+FONT_WARNING: /free/851Gkktt_005.ttf
+FONTSIZE_WARNING: 6L
+
+
+# --- WallPaper ---
+SIZE_WIN_WALLPAPER_DEFF: [1920, 1080]
+KEYWORDS_CALL_WALLPAPER:
+  WALLPAPER_1: [背景(1|１), (W|w)allpaper ?1]
+  WALLPAPER_2: [背景(2|２), (W|w)allpaper ?2]
+  WALLPAPER_3: [背景(3|３), (W|w)allpaper ?3]
+
+# --- BlockView ---
+SIZE_WIN_BLOCKVIEW_DEFF: [960, 540]
+KEYWORDS_CALL_INK: [インク, (I|i)nk]
+
+KEYWORDS_CALL_SKIN:
+  りばーしのおうかん: [りばーしのおうかん]
+  はーとのねっくれす: [はーと(の)?ねっくれす]
+  しろのまるめがね: [しろ(い|の)?まるめがね]
+
+LOC_START_SKINDISPLAY: [0.17, 0.13]
+D_COL_SKINDISPLAY: 0.25
+D_ROW_SKINDISPLAY: 0.4
+
+DATA_SKIN:
+  りばーしのおうかん:
+    filename: skin_crown_reversi.png
+    loc: [485, 55]
+    enable: true
+    rarity: 0      # common
+
+  はーとのねっくれす:
+    filename: skin_necklace_heart.png
+    loc: [490, 280]
+
+  しろのまるめがね:
+    filename: skin_glasses_white.png
+    loc: [500, 235]
+
+  みずいろのりぼん:
+    filename: skin_ribbon_lightblue.png
+    loc: [610, 170]
+
+  てんしのわ:
+    filename: skin_angelring_white.png
+    loc: [495, 125]
+
+  あかのちょうねくたい:
+    filename: skin_bowtie_red.png
+    loc: [560, 320]
+
+  いっぽんのつの:
+    filename: skin_horn_single.png
+    loc: [585, 135]
+
+  まほうつかいのつえ:
+    filename: skin_wand_oldwizzard.png
+    loc: [310, 135]
+
+  ゆうしゃのけん:
+    filename: skin_sord_brave.png
+    loc: [300, 30]
+
+  ぴんくのおしゃぶり:
+    filename: skin_pacifier_pink.png
+    loc: [580, 288]
+
+  しぶいさんぐらす:
+    filename: skin_sanglasses_hardboiled.png
+    loc: [540, 245]
+
+  くろーばーのかみかざり:
+    filename: skin_hairaccessory_clover.png
+    loc: [650, 185]
+
+## Dialogue
+FILE_TEXTBOX: textbox_1.png
+LOC_TEXTBOX: [0.6, 0.5]  # Dialogue ウィンドウ内のテキストボックスの位置
+LOC_BAT_DIALOGUE: [0.03, 0.45]
+LOC_START_TEXT: [0.09, 0.25]           # テキストボックス内のテキストの開始位置
+FONTSIZE_DIALOGUE: 3S
+LENGTH_DIALOGUE: 40
+N_LINE_DIALOGUE: 4
+
+
+#   しろいめがね: [500, 235]
+#   りばーしのおうかん: [485, 55]
+#   はーとのねっくれす: [490, 280]
+
+# ========== 開発者向けの設定 ==========
+
+
+# --- Vote ---
+SIZE_WIN_VOTE_DEFF: [960, 900]
+MARGIN_VOTE: [0.02, 0.02]
+
+# --- other ---
+D_HOP_DEFF: [0, -0.25]
+
+# --- プログラム変数 ---
+KEYWORDS_CANDIDATE_Vote: [きのこ, たけのこ, ちょこのき]
+VOTES_CANDIDATE_Vote:
+  きのこ: 2
+  たけのこ: 5
+  ちょこのき: 0
+
+TITLE_VOTE_Vote: 嫌いなものは?
+SUBTITLE_VOTE_Vote: (コメントで教えてね)
+
+KEYWORDS_CANDIDATE_Reversi Rank: [' ', '  ', '   ']
+VOTES_CANDIDATE_Reversi Rank:
+  ' ': 0
+  '  ': 0
+  '   ': 0
+TITLE_VOTE_Reversi Rank: ランキング
+SUBTITLE_VOTE_Reversi Rank: ' '
+
+# VOTES_CANDIDATE_Reversi Rank:
+#   " ": 0
+#   "  ": 0
+#   "   ": 0
+

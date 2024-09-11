@@ -1,0 +1,35 @@
+data:
+  UC6KryiKlLOQWdhDHi0yro-g:
+    name: Spr
+    image_url: http://www.youtube.com/channel/UC6KryiKlLOQWdhDHi0yro-g
+    chat_count: 48
+    skins:
+      しろいめがね: false
+      はーとのねっくれす: true
+      みずいろのりぼん: true
+  UCfEIfCOqH35G_NxVRiiWxrQ:
+    name: はる
+    image_url: http://www.youtube.com/channel/UCfEIfCOqH35G_NxVRiiWxrQ
+    chat_count: 48
+    skins:
+      ゆうしゃのけん: true
+      いっぽんのつの: true
+  UCVPxsBGGGdli1asNAQWsRKQ:
+    name: はる
+    image_url: http://www.youtube.com/channel/UCVPxsBGGGdli1asNAQWsRKQ
+    chat_count: 6
+    skins:
+      いっぽんのつの: true
+  UCf4Fq2Ho5OxE2UtBV4I53aA:
+    name: ロイド・スカーレット
+    image_url: http://www.youtube.com/channel/UCf4Fq2Ho5OxE2UtBV4I53aA
+    chat_count: 17
+    skins:
+      ぴんくのおしゃぶり: false
+      しぶいさんぐらす: true
+
+ids:
+  Spr: [UC6KryiKlLOQWdhDHi0yro-g]
+  はる: [UCfEIfCOqH35G_NxVRiiWxrQ, UCVPxsBGGGdli1asNAQWsRKQ]
+  ロイド・スカーレット:
+  - UCf4Fq2Ho5OxE2UtBV4I53aA
