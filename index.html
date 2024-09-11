@@ -23,16 +23,18 @@
 <body>
   <h1>中央揃えのタイトル</h1>
   
-  <button onclick="showImage(['skin_ribbon_lightblue.png', 'skin_angelring_white.png'])">着替え</button>
+  <button onclick="showImage()">着替え</button>
   
   <canvas id="myCanvas" style="display:none;"></canvas>
   <img id="outputImage" src="" alt="画像のリンク切れ。ごめんね">
   
   <script>
-    function showImage(skins) {
+    function showImage() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
+      skins = [{name:'skin_ribbon_lightblue.png', x:610, y:170},  {name:'skin_angelring_white.png', x:500, y:100}]
+      
       var img_bat = new Image();
       img_bat.crossOrigin = "anonymous";
 
@@ -59,13 +61,13 @@
           img_skin.crossOrigin = "anonymous";
           img_skin.onload = function() {
             // スキン画像を指定した位置に描画
-            ctx.drawImage(img_skin, 610, 170);
+            ctx.drawImage(img_skin,  skins[index].x,  skins[index].y);
             // 次のスキン画像を処理
             loadSkins(index + 1);
           };
 
           // スキン画像のソースを設定
-          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index];
+          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index].name;
         };
 
         // 最初のスキン画像の読み込みを開始
