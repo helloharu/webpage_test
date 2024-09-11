@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-  <h1>yaml読み込み</h1>
+  <h1>Yaml読み込み</h1>
   
   <button onclick="showImage()">着替え</button>
   
@@ -64,7 +64,7 @@
 
         // スキン画像を順番に読み込んで描画
         var loadSkins = function(index) {
-          if (index >= skinnames.length) {
+          if (index >= enabledskins.length) {
             // すべてのスキン画像が描画されたら出力する
             var outputImage = document.getElementById("outputImage");
             outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
