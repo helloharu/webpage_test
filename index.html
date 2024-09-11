@@ -21,19 +21,35 @@
   </style>
 </head>
 <body>
-  <h1>座標指定</h1>
+  <h1>yaml読み込み</h1>
   
   <button onclick="showImage()">着替え</button>
   
   <canvas id="myCanvas" style="display:none;"></canvas>
   <img id="outputImage" src="" alt="画像のリンク切れ。ごめんね">
+
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   
   <script>
+    function loadYaml(filename){
+      fetch(filename)
+        .then(response => response.text())
+        .then(yamlText => {
+          // YAMLテキストをJavaScriptオブジェクトにパース
+          return jsyaml.load(yamlText);
+        })
+        .catch(error => console.error('YAMLの読み込みに失敗しました:', error));
+    }
+    
     function showImage() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
 
-      skins = [{name:'skin_ribbon_lightblue.png', x:610, y:170},  {name:'skin_angelring_white.png', x:500, y:100}]
+      enabledskins = ['みずいろのりぼん', 'てんしのわ'];
+      skindata = loadYaml('profile.yaml').DATA_SKIN;
+      // skins = [{filename:'skin_ribbon_lightblue.png', x:610, y:170},  {filename:'skin_angelring_white.png', x:500, y:100}];
+
+      
       
       var img_bat = new Image();
       img_bat.crossOrigin = "anonymous";
@@ -48,7 +64,7 @@
 
         // スキン画像を順番に読み込んで描画
         var loadSkins = function(index) {
-          if (index >= skins.length) {
+          if (index >= skinnames.length) {
             // すべてのスキン画像が描画されたら出力する
             var outputImage = document.getElementById("outputImage");
             outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
@@ -61,13 +77,17 @@
           img_skin.crossOrigin = "anonymous";
           img_skin.onload = function() {
             // スキン画像を指定した位置に描画
-            ctx.drawImage(img_skin,  skins[index].x,  skins[index].y);
+
+            ctx.drawImage(img_skin,  skindata[ enabledskins[index] ]["loc"][0], skindata[ enabledskins[index] ]["loc"][1]);
+            // ctx.drawImage(img_skin,  skins[index].x,  skins[index].y);
             // 次のスキン画像を処理
             loadSkins(index + 1);
           };
 
           // スキン画像のソースを設定
-          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index].name;
+          // img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index].name;
+          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skindata[ enabledskins[index] ]["filename"];
+        
         };
 
         // 最初のスキン画像の読み込みを開始
