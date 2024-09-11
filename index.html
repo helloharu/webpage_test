@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-  <h1>Yaml読み込み</h1>
+  <h1>yaml読み込み</h1>
   
   <button onclick="showImage()">着替え</button>
   
@@ -49,6 +49,8 @@
       enabledskins = ['みずいろのりぼん', 'てんしのわ'];
       
       const yamlData = await loadYaml('profile.yaml');
+      console.log(yamlData);
+      
       if (!yamlData) {
         console.error("YAMLデータの取得に失敗しました");
         return;
