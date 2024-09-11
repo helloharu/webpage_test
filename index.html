@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-  <h1>Yaml読み込み</h1>
+  <h1>yaml読み込み</h1>
   
   <button onclick="showImage()">着替え</button>
   
@@ -40,7 +40,9 @@
         })
         .catch(error => console.error('YAMLの読み込みに失敗しました:', error));
     }
-    
+  </script>
+
+  <script>
     function showImage() {
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
