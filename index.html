@@ -3,65 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テストウェブページ</title>
+  <title>スカーレット家の衣装部屋</title>
   <style>
     h1 {
       text-align: center;
     }
-    #myImage {
-      display: none; /* 最初は非表示にする */
-      width: 300px;
-      height: auto;
-    }
     #outputImage {
-      display: block; /* キャンバスの出力を表示するため */
+      display: block;
       max-width: 100%;
       height: auto;
+      margin: 0 auto;
+    }
+    #skinContainer {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .skinWrapper {
+      display: inline-block;
+      text-align: center;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .skinImage {
+      width: 100px;
+      height: auto;
+      border: 2px solid transparent; /* 初期状態は枠なし */
+    }
+    .skinName {
+      margin-top: 5px;
+      font-size: 20px;
+      color: #333;
+    }
+    .active {
+      border-color: lightblue; /* 有効化されたスキンは水色でハイライト */
+      border-width: 6px;
+    }
+    #selectedSkins {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 24px;
+    }
+    #copyButton {
+      text-align: center;
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #howToUse {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 28px;
     }
   </style>
 </head>
 <body>
-  <h1>yaml読み込み</h1>
-  
-  <button onclick="showImage()">着替え</button>
-  
-  <canvas id="myCanvas" style="display:none;"></canvas>
+  <div style="text-align: center;font-size: 48px;"><b>スカーレット家の衣装部屋へようこそ</b></div>
+
+  <br><br><br><br>
+  <div style="text-align: center;font-size: 32px;"><b>使い方</b></div>
+  <div id="howToUse">1. スキンを選択してね　　　　　　　　　　　　　　　<br>2. 着替えの呪文をコピーしてね　　　　　　　　　　　<br>3. コピーしたテキストを配信のチャットに貼り付けてね<br></div>
+  <!-- 上部にバット画像を表示 -->
   <img id="outputImage" src="" alt="画像のリンク切れ。ごめんね">
 
+  <br><br>
+  <!-- 有効化されているスキンを表示する領域 -->
+  <div id="selectedSkins">スキン</div>
+
+
+  <div style="text-align: center;">
+    <button id="copyButton" justify-content="center">着替えの呪文をコピー</button>
+  </div>
+
+
+
+  <!-- スキン画像の一覧を表示するコンテナ -->
+  <div id="skinContainer"></div>
+
+  <canvas id="myCanvas" style="display:none;"></canvas>
+
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-  
+
   <script>
+    let activeSkins = {}; // 有効化されているスキンを保持
+
+    // YAMLファイルを読み込む関数
     async function loadYaml(filename){
       try {
         const response = await fetch(filename);
         const yamlText = await response.text();
-        // YAMLテキストをJavaScriptオブジェクトにパースして返す
         return jsyaml.load(yamlText);
       } catch (error) {
         console.error('YAMLの読み込みに失敗しました:', error);
       }
     }
-    
-    async function showImage() {
-      var canvas = document.getElementById("myCanvas");
-      var ctx = canvas.getContext("2d");
 
-      enabledskins = ['みずいろのりぼん', 'てんしのわ'];
-      
-      const prf = await loadYaml('profile.yaml');
-      
+    // スキン画像を表示する関数
+    async function showSkins() {
+      const prf = await loadYaml('https://raw.githubusercontent.com/helloharu/webpage_test/main/profile.yaml');
+
       if (!prf) {
         console.error("YAMLデータの取得に失敗しました");
         return;
       }
-      const skindata = prf.DATA_SKIN;
-      console.log(skindata)
-      
-      // skins = [{filename:'skin_ribbon_lightblue.png', x:610, y:170},  {filename:'skin_angelring_white.png', x:500, y:100}];
 
-      
-      
-      var img_bat = new Image();
+      const skindata = prf.DATA_SKIN;
+      const skinContainer = document.getElementById('skinContainer');
+
+      // YAMLから取得したスキン画像を全て表示
+      for (const skinName in skindata) {
+        const skinWrapper = document.createElement('div');
+        skinWrapper.classList.add('skinWrapper');
+
+        const img_skin = new Image();
+        img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skindata[skinName]["filename"];
+        img_skin.classList.add('skinImage');
+        img_skin.alt = skinName;
+
+        // スキン画像をクリックしたときのイベントリスナー
+        img_skin.onclick = function() {
+          if (activeSkins[skinName]) {
+            // スキンがすでに有効化されている場合は解除
+            delete activeSkins[skinName];
+            img_skin.classList.remove('active'); // ハイライト解除
+          } else {
+            // スキンを有効化
+            activeSkins[skinName] = skindata[skinName];
+            img_skin.classList.add('active'); // ハイライト追加
+          }
+          updateBatImage(); // バット画像の更新
+          updateSelectedSkins(); // 有効化されたスキンリストの更新
+        };
+
+        // スキンの名前を表示する要素を作成
+        const skinLabel = document.createElement('div');
+        skinLabel.classList.add('skinName');
+        skinLabel.textContent = skinName;
+
+        // スキン画像と名前をラッパーに追加
+        skinWrapper.appendChild(img_skin);
+        skinWrapper.appendChild(skinLabel);
+        skinContainer.appendChild(skinWrapper);
+      }
+    }
+
+    // バット画像にスキンを重ねる関数
+    function updateBatImage() {
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // バット画像の再描画
+      const img_bat = new Image();
+      img_bat.crossOrigin = "anonymous";
+      img_bat.onload = function() {
+        // キャンバスをクリアして、バット画像を再描画
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img_bat, 0, 0);
+
+        // 有効化されているスキンをすべて描画
+        for (const skinName in activeSkins) {
+          const img_skin = new Image();
+          img_skin.crossOrigin = "anonymous";
+          img_skin.onload = function() {
+            const skinData = activeSkins[skinName];
+            ctx.drawImage(img_skin, skinData["loc"][0], skinData["loc"][1]);
+
+            // キャンバスの内容を画像として出力
+            const outputImage = document.getElementById("outputImage");
+            outputImage.src = canvas.toDataURL();
+            outputImage.style.display = "block";
+          };
+          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + activeSkins[skinName]["filename"];
+        }
+
+        // スキンがない場合、バット画像のみ表示
+        if (Object.keys(activeSkins).length === 0) {
+          const outputImage = document.getElementById("outputImage");
+          outputImage.src = canvas.toDataURL();
+          outputImage.style.display = "block";
+        }
+      };
+      img_bat.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png';
+    }
+
+    // 有効化されているスキン名を更新する関数
+    function updateSelectedSkins() {
+      const selectedSkins = document.getElementById("selectedSkins");
+      const skinNames = Object.keys(activeSkins).join(' ');
+      selectedSkins.textContent = `スキン ${skinNames || 'なし'}`;
+    }
+
+    // クリップボードにスキン名をコピーする関数
+    function copyToClipboard() {
+      const skinNames = Object.keys(activeSkins).join(' ');
+      const textToCopy = `スキン ${skinNames || 'なし'}`;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        alert("クリップボードにコピーしました: " + textToCopy);
+      }).catch(err => {
+        console.error('クリップボードへのコピーに失敗しました: ', err);
+      });
+    }
+
+    // バット画像を初期状態で表示する関数
+    async function showBatImage() {
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+
+      const img_bat = new Image();
       img_bat.crossOrigin = "anonymous";
 
       img_bat.onload = function(){
@@ -72,41 +222,23 @@
         // バット画像をキャンバスに描画
         ctx.drawImage(img_bat, 0, 0);
 
-        // スキン画像を順番に読み込んで描画
-        var loadSkins = function(index) {
-          if (index >= enabledskins.length) {
-            // すべてのスキン画像が描画されたら出力する
-            var outputImage = document.getElementById("outputImage");
-            outputImage.src = canvas.toDataURL(); // キャンバスの内容を画像として取得
-            outputImage.style.display = "block"; // 画像を表示する
-            return;
-          }
+        // 初期状態のバット画像を表示
+        const outputImage = document.getElementById("outputImage");
+        outputImage.src = canvas.toDataURL();
+        outputImage.style.display = "block";
 
-          // 次のスキン画像を読み込んで描画する
-          var img_skin = new Image();
-          img_skin.crossOrigin = "anonymous";
-          img_skin.onload = function() {
-            // スキン画像を指定した位置に描画
-
-            ctx.drawImage(img_skin,  skindata[ enabledskins[index] ]["loc"][0], skindata[ enabledskins[index] ]["loc"][1]);
-            // ctx.drawImage(img_skin,  skins[index].x,  skins[index].y);
-            // 次のスキン画像を処理
-            loadSkins(index + 1);
-          };
-
-          // スキン画像のソースを設定
-          // img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skins[index].name;
-          img_skin.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/' + skindata[ enabledskins[index] ]["filename"];
-        
-        };
-
-        // 最初のスキン画像の読み込みを開始
-        loadSkins(0);
+        // スキン画像のリストを表示
+        showSkins();
       };
 
-      // バット画像のソースを設定
       img_bat.src = 'https://raw.githubusercontent.com/helloharu/webpage_test/main/material/flybat_edged_0.png';
     }
+
+    // コピーイベントの設定
+    document.getElementById("copyButton").addEventListener("click", copyToClipboard);
+
+    // ページ読み込み時に
+    window.onload = showBatImage;
   </script>
 </body>
 </html>
